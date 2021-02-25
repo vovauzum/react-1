@@ -3,6 +3,11 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = () => {
+  let postData = [
+    { id: 1, message: "Hi, how are you?", likeCounts: "20" },
+    { id: 2, message: "It's my first post", likeCounts: "30" }
+  ]
+
   return (
     <div className={s.postsBlock}>
       <h3>My posts</h3>
@@ -13,8 +18,8 @@ const MyPosts = () => {
         <button>Add post</button>
       </div>
       <div className={s.posts}>
-        <Post message="Hi, how are you?" like_count="20" />
-        <Post message="It's my first post" like_count="30" />
+        <Post message={postData[0].message} likeCounts={postData[0].likeCounts} />
+        <Post message={postData[1].message} likeCounts={postData[1].likeCounts} />
       </div>
     </div>
   )
