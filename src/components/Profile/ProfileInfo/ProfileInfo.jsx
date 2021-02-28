@@ -9,7 +9,7 @@ const ProfileInfo = () => {
             </div>
             <div className={s.descriptionBlock}>
                 ava + description
-        </div>
+            </div>
         </div>
     )
 }
