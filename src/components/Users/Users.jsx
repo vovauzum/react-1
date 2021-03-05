@@ -50,7 +50,7 @@ const Users = (props) => {
                     </span>
                     <span>
                         <div>{u.location.city}</div>
-                        <div>{u.location.city}</div>
+                        <div>{u.location.country}</div>
                     </span>
                 </span>
             </div>)
