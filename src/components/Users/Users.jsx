@@ -3,7 +3,7 @@ import s from "./Users.module.css";
 import Paginator from "../common/Paginator/Paginator";
 import User from "./User";
 
-let Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, users, ...props }) => {
+let Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, users, followingInProgress, unfollow, follow, ...props }) => {
     return <div>
         <Paginator currentPage={currentPage}
             totalUsersCount={totalUsersCount}
@@ -12,10 +12,10 @@ let Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, users, ...
         <div>
             {
                 users.map(u => <User user={u}
-                    followingInProgress={props.followingInProgress}
+                    followingInProgress={followingInProgress}
                     key={u.id}
-                    unfollow={props.unfollow}
-                    follow={props.follow}
+                    unfollow={unfollow}
+                    follow={follow}
                      />)
             }
         </div>
