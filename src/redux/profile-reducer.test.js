@@ -2,6 +2,7 @@ import profileReducer, { addPostActionCreator, deletePost } from "./profile-redu
 import React from "react";
 
 it("after deleting length should not be decremented if id is incorrect", () => {
+    // 1. test data
     let action = deletePost(1000);
     let state = {
         posts: [
@@ -9,8 +10,9 @@ it("after deleting length should not be decremented if id is incorrect", () => {
             { id: 2, message: "It's my first post", likeCounts: "30" }
         ]
     };
-
+    // 2. action
     let newState = profileReducer(state, action);
 
+    // 3. expectations
     expect(newState.posts.length).toBe(2);
 })
