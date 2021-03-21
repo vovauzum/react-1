@@ -3,10 +3,10 @@ import s from "./Users.module.css";
 import Paginator from "../common/Paginator/Paginator";
 import User from "./User";
 
-let Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, users, followingInProgress, unfollow, follow, ...props }) => {
+let Users = ({ currentPage, totalItemsCount, pageSize, onPageChanged, users, followingInProgress, unfollow, follow, ...props }) => {
     return <div>
         <Paginator currentPage={currentPage}
-            totalUsersCount={totalUsersCount}
+            totalItemsCount={totalItemsCount}
             pageSize={pageSize}
             onPageChanged={onPageChanged} />
         <div>
