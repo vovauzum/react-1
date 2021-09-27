@@ -20,7 +20,7 @@ const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileCo
 
 class App extends Component {
     catchAllUnhandledErrors = (promiseRejectionEvent) => {
-        alert("Some error ocurred");
+        alert("Some error occurred");
     }
     componentDidMount() {
         this.props.initializeApp();
@@ -49,7 +49,7 @@ class App extends Component {
                         <Route path="/profile/:userId?"
                             render={withSuspense(ProfileContainer)} />
                         <Route path="/users"
-                            render={() => <UsersContainer />} />
+                            render={() => <UsersContainer pageTitle={"Samurais"}/>} />
                         <Route path="/login"
                             render={() => <Login />} />
                         <Route path="/news"
