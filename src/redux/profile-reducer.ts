@@ -8,7 +8,6 @@ let initialState = {
         {id: 1, message: "Hi, how are you?", likeCounts: 20},
         {id: 2, message: "It's my first post", likeCounts: 30}
     ] as Array<PostType>,
-    newPostText: "it-kamasutra",
     profile: null as ProfileType | null,
     status: ""
 };
@@ -24,7 +23,6 @@ const profileReducer = (state = initialState, action: ActionsType): InitialState
             return {
                 ...state,
                 posts: [...state.posts, newPost],
-                newPostText: ""
             };
         case "SN/PROFILE/SET_STATUS":
             return {
@@ -39,7 +37,7 @@ const profileReducer = (state = initialState, action: ActionsType): InitialState
         case "SN/PROFILE/DELETE_POST":
             return {
                 ...state,
-                posts: state.posts.filter(p => p.id != action.postId)
+                posts: state.posts.filter(p => p.id !== action.postId)
             };
         case "SN/PROFILE/SAVE_PHOTO_SUCCESS":
             return {

@@ -1,9 +1,17 @@
 import React from "react";
 import s from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import {UserType} from "../../types/types";
 
-let User = ({ user, followingInProgress, unfollow, follow }) => {
+type PropsType = {
+    user: UserType
+    followingInProgress: Array<number>
+    unfollow: (userId: number) => void
+    follow: (userId: number) => void
+}
+
+let User: React.FC<PropsType> = ({user, followingInProgress, unfollow, follow}) => {
     return (
         <div>
             <span>
@@ -11,21 +19,24 @@ let User = ({ user, followingInProgress, unfollow, follow }) => {
                     <NavLink to={"/profile/" + user.id}>
                         <img className={s.usersPhoto} src={user.photos.small != null
                             ? user.photos.small
-                            : userPhoto} />
+                            : userPhoto} alt={""}/>
                     </NavLink>
                 </div>
                 <div>
                     {
                         user.followed
                             ? <button disabled={followingInProgress
-                                .some(id => id == user.id)}
-                                onClick={() => { unfollow(user.id) }}>
-                                    
+                                .some(id => id === user.id)}
+                                      onClick={() => {
+                                          unfollow(user.id)
+                                      }}>
+
                                 Unfollow</button>
                             : <button disabled={followingInProgress
-                                .some(id => id == user.id)}
-                                onClick={() => {
-                                     follow(user.id) }}>
+                                .some(id => id === user.id)}
+                                      onClick={() => {
+                                          follow(user.id)
+                                      }}>
                                 Follow</button>
                     }
                 </div>

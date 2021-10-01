@@ -1,6 +1,6 @@
 import {updateObjectInArray} from "../utils/object-helpers";
 import {UserType} from "../types/types";
-import {AppStateType, BaseThunkType, InferActionsType} from "./redux-store";
+import {BaseThunkType, InferActionsType} from "./redux-store";
 import {Dispatch} from "redux";
 import {usersAPI} from "../api/users-api";
 
@@ -36,7 +36,7 @@ const usersReducer = (state = initialState, action: ActionsTypes): InitialState 
         case "SN/USERS/TOGGLE_IS_FOLLOWING_PROGRESS":
             return {
                 ...state,
-                followingInProgress: action.isFetching ? [...state.followingInProgress, action.userId] : state.followingInProgress.filter(id => id != action.userId)
+                followingInProgress: action.isFetching ? [...state.followingInProgress, action.userId] : state.followingInProgress.filter(id => id !== action.userId)
             }
         default:
             return state;
@@ -84,7 +84,7 @@ const _followUnfollowFlow = async (dispatch: Dispatch<ActionsTypes>,
                                    actionCreator: (userId: number) => ActionsTypes) => {
     dispatch(actions.toggleFollowingProgress(true, userId));
     let response = await apiMethod(userId);
-    if (response.data.resultCode == 0) {
+    if (response.data.resultCode === 0) {
         dispatch(actionCreator(userId));
     }
     dispatch(actions.toggleFollowingProgress(false, userId));

@@ -2,7 +2,7 @@ let initialState = {};
 
 type InitialStateType = typeof initialState
 
-const sidebarReducer = (state = initialState, action: any) => {
+const sidebarReducer = (state = initialState): InitialStateType => {
     return state;
 }
 

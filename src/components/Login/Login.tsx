@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {InjectedFormProps, reduxForm} from "redux-form";
 import { required } from "../../utils/validators/validators";
-import { createField, Input } from "../common/FormsControls/FormsControls";
+import {createField, GetStringKeys, Input} from "../common/FormsControls/FormsControls";
 import { login } from "../../redux/auth-reducer";
 import { Redirect } from "react-router";
 import style from "../common/FormsControls/FormsControls.module.css";
@@ -18,7 +18,7 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnPro
             {createField<LoginFormValuesTypeKeys>("Email", "email", [required], Input)}
             {createField<LoginFormValuesTypeKeys>("Password", "password", [required], Input, { type: "password" })}
             {createField<LoginFormValuesTypeKeys>(undefined, "rememberMe", [], Input, { type: "checkbox" }, "Remember Me")}
-            {captchaUrl && <img src={captchaUrl} />}
+            {captchaUrl && <img src={captchaUrl} alt={captchaUrl}/>}
             {captchaUrl && createField("Symbols from image", "captcha", [required], Input, {})}
             {error && <div className={style.formSummaryError}>
                 {error}
@@ -48,7 +48,7 @@ export type LoginFormValuesType = {
     password: string
     email: string
 }
-type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType, string>
+type LoginFormValuesTypeKeys = GetStringKeys<LoginFormValuesType>
 
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
     const onSubmit = (formData: LoginFormValuesType) => {
