@@ -2,7 +2,6 @@ import React from "react";
 import {Field, WrappedFieldMetaProps, WrappedFieldProps} from "redux-form";
 import styles from "./FormsControls.module.css"
 import {FieldValidatorType} from "../../../utils/validators/validators";
-import {LoginFormValuesType} from "../../Login/Login";
 
 type FormControlPropsType = {
     meta: WrappedFieldMetaProps
@@ -31,10 +30,10 @@ export const Input: React.FC<WrappedFieldProps> = (props) => {
 }
 
 export function createField<FormKeysType extends string>(placeholder: string | undefined,
-                            name: FormKeysType,
-                            validators: Array<FieldValidatorType>,
-                            component: React.FC<WrappedFieldProps>,
-                            props = {}, text = "") {
+                                                         name: FormKeysType,
+                                                         validators: Array<FieldValidatorType>,
+                                                         component: React.FC<WrappedFieldProps>,
+                                                         props = {}, text = "") {
     return <div>
         <Field placeholder={placeholder}
                name={name}

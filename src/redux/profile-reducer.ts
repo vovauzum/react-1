@@ -91,7 +91,7 @@ export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch,
     let data = await profileAPI.saveProfile(profile);
     if (data.resultCode === 0) {
         if (userId != null) {
-            dispatch(getUserProfile(userId));
+            await dispatch(getUserProfile(userId));
         } else {
             throw new Error("userId can't be null")
         }

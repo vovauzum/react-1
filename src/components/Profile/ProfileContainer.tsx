@@ -15,11 +15,9 @@ type DispatchPropsType = {
     savePhoto: (file: File) => void,
     saveProfile: (profile: ProfileType) => Promise<any>
 }
-
 type PathParamsType = {
     userId: string
 }
-
 type PropsType = MapPropsType & DispatchPropsType & RouteComponentProps<PathParamsType>;
 
 class ProfileContainer extends React.Component<PropsType> {

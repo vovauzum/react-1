@@ -19,6 +19,7 @@ const MyPosts: React.FC<MapPropsType & DispatchPropsType> = props => {
     let onAddPost = (values: AddPostFormValuesType) => {
         props.addPost(values.newPostText);
     }
+
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
@@ -29,7 +30,5 @@ const MyPosts: React.FC<MapPropsType & DispatchPropsType> = props => {
         </div>
     )
 }
-
-const MyPostsMemorized = React.memo(MyPosts);
 
 export default MyPosts;

@@ -5,7 +5,6 @@ import {logout} from "../../redux/auth-reducer";
 import {AppStateType} from "../../redux/redux-store";
 
 class HeaderContainer extends React.Component<MapPropsType & DispatchPropsType> {
-
     render() {
         return <Header {...this.props} />
     }
@@ -17,5 +16,4 @@ const mapStateToProps = (state: AppStateType) => ({
 });
 
 export default connect<MapPropsType, DispatchPropsType, {}, AppStateType>(
-    mapStateToProps,
-    {logout})(HeaderContainer);
+    mapStateToProps, {logout})(HeaderContainer);

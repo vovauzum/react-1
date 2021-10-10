@@ -1,4 +1,5 @@
-// eslint-disable-next-line no-unused-vars
+// @typescript-eslint/no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from "react";
 import {connect} from "react-redux";
 import {actions} from "../../../redux/profile-reducer";

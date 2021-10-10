@@ -4,7 +4,6 @@ type DialogType = {
     id: number
     name: string
 }
-
 type MessageType = {
     id: number
     message: string
@@ -43,7 +42,8 @@ const dialogsReducer = (state = initialState, action: ActionsType): InitialState
 
 export const actions = {
     sendMessage: (newMessageBody: string) => ({
-        type: "SN/DIALOGS/SEND-MESSAGE", newMessageBody} as const)
+        type: "SN/DIALOGS/SEND-MESSAGE", newMessageBody
+    } as const)
 }
 
 export default dialogsReducer;

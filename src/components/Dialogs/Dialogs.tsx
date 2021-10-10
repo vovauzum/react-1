@@ -21,6 +21,7 @@ const Dialogs: React.FC<OwnPropsType> = (props) => {
     let addNewMessage = (values: { newMessageBody: string }) => {
         props.sendMessage(values.newMessageBody);
     }
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>

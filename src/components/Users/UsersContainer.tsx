@@ -1,8 +1,15 @@
 import React from "react";
-import { connect } from "react-redux";
-import { compose } from "redux";
-import { follow, unfollow, requestUsers } from "../../redux/users-reducer";
-import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from "../../redux/users-selectors";
+import {connect} from "react-redux";
+import {compose} from "redux";
+import {follow, requestUsers, unfollow} from "../../redux/users-reducer";
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers
+} from "../../redux/users-selectors";
 import Preloader from "../common/Preloader/Preloader";
 import Users from "./Users";
 import {UserType} from "../../types/types";
@@ -26,30 +33,31 @@ type MapDispatchPropsType = {
 type OwnPropsType = {
     pageTitle: string
 }
-
 type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
 class UsersContainer extends React.Component<PropsType> {
     componentDidMount() {
-        const { currentPage, pageSize } = this.props;
+        const {currentPage, pageSize} = this.props;
         this.props.getUsers(currentPage, pageSize);
     }
+
     onPageChanged = (pageNumber: number) => {
-        const { pageSize } = this.props;
+        const {pageSize} = this.props;
         this.props.getUsers(pageNumber, pageSize);
     }
+
     render() {
         return <>
             <h2>{this.props.pageTitle}</h2>
-            {this.props.isFetching ? <Preloader /> : null}
+            {this.props.isFetching ? <Preloader/> : null}
             <Users totalItemsCount={this.props.totalItemsCount}
-                pageSize={this.props.pageSize}
-                currentPage={this.props.currentPage}
-                onPageChanged={this.onPageChanged}
-                users={this.props.users}
-                follow={this.props.follow}
-                unfollow={this.props.unfollow}
-                followingInProgress={this.props.followingInProgress} />
+                   pageSize={this.props.pageSize}
+                   currentPage={this.props.currentPage}
+                   onPageChanged={this.onPageChanged}
+                   users={this.props.users}
+                   follow={this.props.follow}
+                   unfollow={this.props.unfollow}
+                   followingInProgress={this.props.followingInProgress}/>
         </>
     }
 }

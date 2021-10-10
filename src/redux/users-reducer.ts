@@ -68,7 +68,7 @@ export const actions = {
 
 export const requestUsers = (page: number,
                              pageSize: number): ThunkType => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         dispatch(actions.toggleIsFetching(true));
         dispatch(actions.setCurrentPage(page));
         let data = await usersAPI.getUsers(page, pageSize);
@@ -92,13 +92,13 @@ const _followUnfollowFlow = async (dispatch: Dispatch<ActionsTypes>,
 
 export const follow = (userId: number): ThunkType => {
     return async (dispatch) => {
-        _followUnfollowFlow(dispatch, userId, usersAPI.follow, actions.followSuccess);
+        await _followUnfollowFlow(dispatch, userId, usersAPI.follow, actions.followSuccess);
     }
 }
 
 export const unfollow = (userId: number): ThunkType => {
     return async (dispatch) => {
-        _followUnfollowFlow(dispatch, userId, usersAPI.unfollow, actions.unfollowSuccess);
+        await _followUnfollowFlow(dispatch, userId, usersAPI.unfollow, actions.unfollowSuccess);
     }
 }
 

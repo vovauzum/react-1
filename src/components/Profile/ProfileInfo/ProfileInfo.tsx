@@ -61,6 +61,7 @@ type ProfileDataPropsType = {
     isOwner: boolean
     goToEditMode: () => void
 }
+
 const ProfileData: React.FC<ProfileDataPropsType> = ({profile, isOwner, goToEditMode}) => {
     return <div>
         {isOwner && <div>
@@ -86,7 +87,8 @@ const ProfileData: React.FC<ProfileDataPropsType> = ({profile, isOwner, goToEdit
             Object
                 .keys(profile.contacts)
                 .map(key => {
-                    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key as | keyof ContactsType]}/>
+                    return <Contact key={key} contactTitle={key}
+                                    contactValue={profile.contacts[key as | keyof ContactsType]}/>
                 })}
         </div>
     </div>
@@ -96,6 +98,7 @@ type ContactsPropsType = {
     contactTitle: string
     contactValue: string
 }
+
 const Contact: React.FC<ContactsPropsType> = ({contactTitle, contactValue}) => {
     return <div className={s.contact}>
         <b>{contactTitle}:</b> {contactValue}

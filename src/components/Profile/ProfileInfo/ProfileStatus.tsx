@@ -1,11 +1,9 @@
 import React, {ChangeEvent} from "react";
-import s from "./ProfileInfo.module.css";
 
 type PropsType = {
     status: string
     updateStatus: (newStatus: string) => void
 }
-
 type StateType = {
     editMode: boolean
     status: string
@@ -49,16 +47,16 @@ class ProfileStatus extends React.Component<PropsType, StateType> {
         return (
             <div>
                 {!this.state.editMode &&
-                    <div>
+                <div>
                         <span onDoubleClick={this.activateEditMode}>
                             {this.props.status || "-----"}</span>
-                    </div>
+                </div>
                 }
                 {this.state.editMode &&
-                    <div>
-                        <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode}
-                            value={this.state.status} />
-                    </div>
+                <div>
+                    <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode}
+                           value={this.state.status}/>
+                </div>
                 }
             </div>
         )

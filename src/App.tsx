@@ -26,7 +26,6 @@ type DispatchPropsType = {
 const SuspendedDialogs = withSuspense(DialogsContainer)
 const SuspendedProfile = withSuspense(ProfileContainer)
 
-
 class App extends Component<MapPropsType & DispatchPropsType> {
     catchAllUnhandledErrors = (e: PromiseRejectionEvent) => {
         alert("Some error occurred");
@@ -51,7 +50,6 @@ class App extends Component<MapPropsType & DispatchPropsType> {
                 <Navbar/>
                 <div className="app-wrapper-content">
                     <Switch>
-
                         <Route exact path="/"
                                render={() => <Redirect to={"/profile"}/>}/>
                         <Route path="/dialogs"
@@ -70,7 +68,6 @@ class App extends Component<MapPropsType & DispatchPropsType> {
                                render={() => <Settings/>}/>
                         <Route path="*"
                                render={() => <div>404 NOT FOUND</div>}/>
-
                     </Switch>
                 </div>
             </div>

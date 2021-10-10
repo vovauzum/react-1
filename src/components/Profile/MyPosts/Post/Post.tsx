@@ -3,7 +3,7 @@ import s from "./Post.module.css";
 
 type PropsType = {
     message: string
-    likesCount: number
+    likeCounts: number
 }
 
 const Post: React.FC<PropsType> = (props) => {
@@ -12,7 +12,7 @@ const Post: React.FC<PropsType> = (props) => {
             <img src="https://cdn.jpegmini.com/user/images/slider_puffin_before_mobile.jpg" alt=""/>
             {props.message}
             <div>
-                <span>like {props.likesCount}</span>
+                <span>like {props.likeCounts}</span>
             </div>
         </div>
     )
